@@ -1,6 +1,6 @@
 # DevDay Lab: Build and Run a Containerized Web Application using Docker and Amazon Elastic Container Service (ECS)
 
-In this lab we will learn how to build and run a docker container. Then use the Elastic Container Service to host and run this container in the Cloud
+In this lab we will learn how to build and run a containerized application. We will then use the Amazon Elastic Container Service to host and run this container in the Cloud.
 
 This is the architecture the lab will be using. There is currently a version of this architecture deployed for you in the cloud. In this lab we will be deploying a new version of our containerized application onto this cluster.
 
