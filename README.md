@@ -1,3 +1,5 @@
+#Let's get started
+
 Search for and Go to **Cloud9** on the AWS Web console
 
 On top right corner - **Switch to Oregon**
@@ -80,12 +82,11 @@ image**
 
 \*If facing issues - Make sure you've done step 2
 
-**Once the push is completed your docker image will be pushed to an ECR
-image repository on AWS **
+**Once the push is completed your docker image will be pushed to an ECR image repository on AWS**
 
-![](media/image6.png){width="5.530194663167104in"
-height="2.7920800524934384in"}**\
-**An ECS cluster is already provisioned for you. The cluster is
+![](media/image6.png)
+
+An ECS cluster is already provisioned for you. The cluster is
 currently running a previous version of the same application. You will
 now **Deploy** the your new application **Version** to the service
 
@@ -168,26 +169,10 @@ OR
 
 \$ git reset \--hard origin/master
 
-**Run Setup Script**
-
-\$ sudo yum update -y
-
-\$ sudo yum install -y docker
-
-\$ sudo service docker start
-
-\$ sudo usermod -a -G docker ec2-user
 
 **Run Reset Script**
 
-git reset \--hard origin/master
 
-\$ cd \~/environment
+\$ chmod +x Reset,sh
 
-\$ git reset \--hard origin/master
-
-\$ docker stop \$(docker ps -a -q)
-
-\$ docker rm \$(docker ps -a -q)
-
-\$ docker rmi \$(docker images -a -q) -f
+\$ ./Reset.sh
