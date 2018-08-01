@@ -120,7 +120,7 @@ An ECS cluster is already provisioned for you. The cluster is
 currently running a previous version of the same application. You will
 now **Deploy** the your new application **Version** to the service
 
-**Let's Update the ECS Task Definition to use the image that you just pushed**
+## Let's Update the ECS Task Definition to use the image that you just pushed
 
 Navigate to the **Elastic Container Service** Dashboard.
 
@@ -138,7 +138,7 @@ This will create a new version of the Task. Note the Version Number. The
 new version will use the latest container image. i.e. the image that you
 just pushed.
 
-**Let's Update the ECS Service to deploy the new version of the task**
+## Let's Update the ECS Service to deploy the new version of the task
 
 * In the left navigation pane, click **Clusters**.
 
@@ -167,6 +167,8 @@ This will deploy a new version of the application.
 * On the **Launch Status** page, click **View Service**
 
 * On the **Service: myService** page, click the **Events** tab.
+
+## Check if the new version on the application has successfully deployed
 
 Wait a few minutes. Monitor the process of draining connections and
 stopping tasks till the service reaches a steady state.
