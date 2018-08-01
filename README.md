@@ -4,8 +4,7 @@ On top right corner - **Switch to Oregon**
 
 On the left hand pane click on **"Shared With You"**
 
-![](media/image1.png){width="6.263888888888889in"
-height="3.626388888888889in"}
+![](media/image1.png)
 
 Open the "**ECS Lab Cloud 9 Env**" By clicking on open IDE
 
@@ -20,8 +19,7 @@ cd to the correct folder
 Open the **index.html** file inside the Dev Labs folder and put in
 something recognizable
 
-![](media/image2.png){width="6.263888888888889in"
-height="3.297222222222222in"}
+![](media/image2.png)
 
 The next person will read what you put in so please be respectful
 
@@ -59,16 +57,13 @@ Repositories
 
 Click on "**ecs-lab-repo**"
 
-![](media/image3.png){width="6.263888888888889in"
-height="2.2673272090988625in"}
+![](media/image3.png)
 
 Click on " **View Push Commands** "
 
-![](media/image4.png){width="6.263888888888889in"
-height="3.7284722222222224in"}
+![](media/image4.png)
 
-![](media/image5.png){width="5.171628390201225in"
-height="5.049504593175853in"}
+![](media/image5.png)
 
 **Go back to cloud9**
 
@@ -153,14 +148,12 @@ Click the **Deployments** tab.
 
 Click on **myLoadBalancer**
 
-![](media/image7.png){width="6.263888888888889in"
-height="4.823611111111111in"}
+![](media/image7.png)
 
 Paste in the **Load Balancer\'s DNS name** to see the new version of the
 app running in the cloud
 
-![](media/image8.png){width="6.263888888888889in"
-height="1.8680555555555556in"}
+![](media/image8.png)
 
 Congratulations! Your Containerized web application is Now Running in
 the cloud
