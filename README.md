@@ -1,146 +1,112 @@
-**[START THE LAB FROM HERE]{.underline}**
+Search for and Go to **Cloud9** on the AWS Web console
 
-**Go to Cloud9 on the aws web console**
+On top right corner - **Switch to Oregon**
 
-**On top right corner - Switch to US-EAST-1**
+On the left hand pane click on **"Shared With You"**
 
-**[Lab Setup Steps]{.underline}**
+![](media/image1.png){width="6.263888888888889in"
+height="3.626388888888889in"}
 
-**Launch a Cloud9 environment or Pick ECSLabCloud9**
+Open the "**ECS Lab Cloud 9 Env**" By clicking on open IDE
 
-This is your IDE in the cloud.
+**Get set up**
 
-You can do all of these steps in a local IDE as well
+Once Inside Cloud 9 Open the Terminal
 
-**Install Docker**
+cd to the correct folder
 
-\$ sudo yum update -y
+\$ cd \~/environment/devlabs2018/
 
-\$ sudo yum install -y docker
+Open the **index.html** file inside the Dev Labs folder and put in
+something recognizable
 
-\$ sudo service docker start
+![](media/image2.png){width="6.263888888888889in"
+height="3.297222222222222in"}
 
-**Give Docker super user permissions**
+The next person will read what you put in so please be respectful
 
-\$ sudo usermod -a -G docker ec2-user
-
-**\
-**
-
-**Open the Terminal**
-
-**cd to folder**
-
-\$ cd \~/environment
-
-**Get Website Files downloaded into cloud9**
-
-\$ curl -O
-https://s3.amazonaws.com/dev-lab-website-bucket/DockerStaticSite-master.zip
-
-**Unzip the downloaded Files**
-
-\$ unzip -o DockerStaticSite-master.zip
-
-**cd into the unzipped folder**
-
-\$ cd DockerStaticSite-master
-
-**Edit the index.html file and put in something Recognizable **
-
-\<h1\>Hello World! Put something Here \</h1\>
-
-\<p\>This is a simple static website being served from Nginx running
-inside a Docker container!\</p\>
-
-**(The next person will read what you put in so please be respectful)**
-
-**Save your edited HTML File**
+**Save** your edited HTML File
 
 **\
 **
 
 **Build and Run your Docker Container Locally**
 
-**Build Image from DockerFile **
+Build Image from DockerFile
 
-\$ docker build -t staticsite:1.0 .
+\$ docker build -t staticsite:1.0 DockerStaticSite-master/
 
-**Run Container from Image**
+Run Container from freshly built Image
 
 \$ docker run -itd \--name mycontainer \--publish 8080:80 staticsite:1.0
 
-**Test if Container is Running**
+Test if Container is Running
 
 \$ curl http://localhost:8080
 
-**If u get a html page as a response, then the container is running
-successfully!**
-
-\<h1\>Hello World! Put something Here \</h1\>
-
-\<p\>This is a simple static website being served from Nginx running
-inside a Docker container!\</p\>
-
-**\
+If u get a html page as a response, then the container is running
+successfully! Well done.**\
 **
 
 **Push your container Image to the Cloud**
 
-**Now that your containerized application is running locally, let's push
-your docker image to a ECR repository in the cloud**
+Now that your containerized application is running locally, let's push
+your docker image to a ECR (Elastic Container Repository) repository in
+the cloud
 
-**\*ECR -- Elastic Container Repository**
+Navigate to the ECS (Elastic Container Service) console and Click on
+Repositories
 
-1)  **Run this command to get your ECR login credentials**
+Click on "**ecs-lab-repo**"
 
-aws ecr get-login \--no-include-email \--region us-east-1
+![](media/image3.png){width="6.263888888888889in"
+height="2.2673272090988625in"}
 
-Note: If you receive an \"Unknown options: \--no-include-email\" error
-when using the AWS CLI, ensure that you have the latest version
-installed. [[Learn
-more]{.underline}](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+Click on " **View Push Commands** "
 
-**2) Step 1 will return back a Big response**
+![](media/image4.png){width="6.263888888888889in"
+height="3.7284722222222224in"}
 
-**Copy that entire response and Paste in the terminal and run it to
-login**
+![](media/image5.png){width="5.171628390201225in"
+height="5.049504593175853in"}
 
-**3) Build your Docker image using the following command. **
+**Go back to cloud9**
 
-docker build -t lab-image-repo .
+**cd into the correct folder**
 
-**4) After the build completes, tag your image so you can push the image
-to this repository:**
+\$ cd DockerStaticSite-master/
 
-docker tag lab-image-repo:latest
-894812553491.dkr.ecr.us-east-1.amazonaws.com/lab-image-repo:latest
+Login to ECR using (The quotes in the command are important)
 
-**5) Run the following command to push this image to your newly created
-AWS repository: **
+\$ \`aws ecr get-login \--no-include-email \--region us-west-2\`
 
-docker push
-894812553491.dkr.ecr.us-east-1.amazonaws.com/lab-image-repo:latest
+**Follow the Push commands 3, 4 & 5 to build and push the modified
+image**
+
+\*If facing issues - Make sure you've done step 2
 
 **Once the push is completed your docker image will be pushed to an ECR
-image repository on AWS**
+image repository on AWS **
 
-**\
-An ECS cluster is already provisioned for you. The cluster is currently
-running a previous version of the same application. You will now Deploy
-the your new Application Version to the Service**
+![](media/image6.png){width="5.530194663167104in"
+height="2.7920800524934384in"}**\
+**An ECS cluster is already provisioned for you. The cluster is
+currently running a previous version of the same application. You will
+now **Deploy** the your new application **Version** to the service
 
 **Update the ECS task definition to use the image that you just Pushed**
 
-1.  Navigate to the **Elastic Container Service** Dashboard.
+Navigate to the **Elastic Container Service** Dashboard.
 
-2.  In the navigation menu on the **left**, click **Task Definitions.**
+In the navigation menu on the **left**, click **Task Definitions.**
 
-3.  Select the **simplewebserver**
+Select the **simplewebtask**
 
-4.  Click **Create new revision**
+checkmark **simplewebtask**
 
-5.  Scroll to the bottom of the page, then click **Create**
+Click **Create New Revision**
+
+Scroll to the bottom of the page, then click **Create**
 
 This will create a new version of the Task. Note the Version Number. The
 new version will use the latest container image. i.e. the image that you
@@ -148,59 +114,68 @@ just pushed.
 
 **Update the ECS Service to deploy the new version of the task**
 
-6.  In the left navigation pane, click **Clusters**.
+In the left navigation pane, click **Clusters**.
 
-7.  In the **Clusters** window, click default \>.
+In the **Clusters** window, click **default \>**.
 
 This is the cluster that your service resides in.
 
-8.  On the **Services** tab, check mywebservice
+On the **Services** tab, check **webService**
 
-9.  Click **Update** then configure:
+Click **Update** then click on Revision
 
-**Revision:** select the *latest*Click **Next step**
+**Revision:** select the *latest version that you just created*
 
-43. On **Step 2**, click **Next step**
+**Force New Deployment --** Check this box & turn it on
 
-44. On **Step 3**, click **Next step**
+Click **Next Step**
 
-45. On **Step 4**, click **Update Service**
+On **Step 2**, click **Next Step**
+
+On **Step 3**, click **Next Step**
+
+On **Step 4**, click **Update Service**
 
 This will deploy a new version of the application.
 
-46. On the **Launch Status** page, click **View Service**
+On the **Launch Status** page, click **View Service**
 
-47. On the **Service: myService** page, click the **Events** tab.
+On the **Service: myService** page, click the **Events** tab.
 
-48. Monitor the process of draining connections and stopping tasks till
-    > the service reaches a steady state.
+Wait a few minutes. Monitor the process of draining connections and
+stopping tasks till the service reaches a steady state.
 
 You may need to click the **Refresh** button to see the new events.
 
-49. Click the **Deployments** tab.
+Once the events says "service webService has reached a steady state."
 
-<!-- -->
+Click the **Deployments** tab.
 
-50. Return to your web browser and refresh the Load Balancer\'s URL (DNS
-    > name) to see the new version of the app
+Click on **myLoadBalancer**
 
-![](media/image1.png){width="6.207692475940507in"
-height="2.3391305774278215in"}
+![](media/image7.png){width="6.263888888888889in"
+height="4.823611111111111in"}
+
+Paste in the **Load Balancer\'s DNS name** to see the new version of the
+app running in the cloud
+
+![](media/image8.png){width="6.263888888888889in"
+height="1.8680555555555556in"}
 
 Congratulations! Your Containerized web application is Now Running in
 the cloud
 
-**[Lab Setup Steps]{.underline}**
+**Lab Setup Steps**
 
-**On top right corner - Switch to US-EAST-1**
+**Get Website Files downloaded into cloud9**
 
-**Launch a Cloud9 instance or Pick ECSLabCloud9**
+\$ git clone https://github.com/bikrambora/devlabs2018.git
 
-This is your IDE in the cloud.
+OR
 
-You can do all of these steps in a local IDE as well
+\$ git reset \--hard origin/master
 
-**Install Docker**
+**Run Setup Script**
 
 \$ sudo yum update -y
 
@@ -208,41 +183,18 @@ You can do all of these steps in a local IDE as well
 
 \$ sudo service docker start
 
-**Give Docker super user permissions**
-
 \$ sudo usermod -a -G docker ec2-user
 
-**[Lab Reset Steps]{.underline} *Skip if first Run***
+**Run Reset Script**
 
-**Delete all local Docker Images **
-
-\$ docker rmi \$(docker images -a -q) -f
-
-**Stop all containers running locally **
-
-\$ docker stop \$(docker ps -a -q)
-
-**Delete all local stopped containers **
-
-\$ docker rm \$(docker ps -a -q)
-
-**[\
-]{.underline}**
-
-**[Lab Reset Steps]{.underline} **
-
-**cd to correct directory**
+git reset \--hard origin/master
 
 \$ cd \~/environment
 
-**Stop all containers running locally **
+\$ git reset \--hard origin/master
 
 \$ docker stop \$(docker ps -a -q)
 
-**Delete all local stopped containers **
-
 \$ docker rm \$(docker ps -a -q)
-
-**Delete all local Docker Images **
 
 \$ docker rmi \$(docker images -a -q) -f
