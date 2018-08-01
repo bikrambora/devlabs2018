@@ -1,4 +1,4 @@
-#Let's get started
+# Let's get started
 
 Search for and Go to **Cloud9** on the AWS Web console
 
