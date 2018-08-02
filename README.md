@@ -1,8 +1,8 @@
 # DevDay Lab: Build and Run a Containerized Web Application using Docker and Amazon Elastic Container Service (ECS)
 
-In this lab we will learn how to build and run a containerized application. We will then use the Amazon Elastic Container Service to host and run this container in the Cloud.
+In this lab we will learn how to build and run a containerised application. We will then use the Amazon Elastic Container Service to host and run this container in the Cloud.
 
-This is the architecture the lab will be using. There is currently a version of this architecture deployed for you in the cloud. In this lab we will be deploying a new version of our containerized application onto this cluster.
+The diagram below illustrates the architecture the lab will be using. There is currently a version of this architecture deployed for you in the cloud. In this lab we will be deploying a new version of our containerized application onto this cluster.
 
 ![](media/overview-lab.png)
 
@@ -10,7 +10,7 @@ This is the architecture the lab will be using. There is currently a version of 
 
 
 Go to **Cloud9** on the AWS Web console - this is your IDE in the cloud.
-You can also you local IDE for all the steps of this lab.
+You can also use your local IDE for all the steps of this lab.
 
 * On top right corner - **Switch to Oregon**
 
@@ -24,7 +24,7 @@ Open the "**ECS Lab Cloud 9 Env**" By clicking on **Open IDE**
 
 ## Initial set up
 
-Once Inside Cloud9 - Open the Terminal & cd to the correct folder
+Once Inside Cloud9 - Open the Terminal change directory to the correct folder
 ```
 $ cd ~/environment/devlabs2018/
 ```
@@ -61,33 +61,33 @@ Build a container Image from the DockerFile
 $ docker build -t staticsite:1.0 DockerStaticSite-master/
 ```
 
-Run Container from freshly built Image
+Run a container from the freshly built image
 ```
 $ docker run -itd \--name mycontainer \--publish 8080:80 staticsite:1.0
 ```
-Test if Container is Running
+Test if your container is running
 ```
 $ curl http://localhost:8080
 ```
 
-**If u get a html page as a response, then the container is running successfully! Well done.**
+**If you get an HTML page as a response, then the container is running successfully - well done!.**
 
 ## Push your container Image to the Cloud
-
-![](media/docker-build.png)
 
 Now that your containerized application is running locally, let's push
 your docker image to a ECR (Elastic Container Repository) repository in
 the cloud
 
-Navigate to the ECS (Elastic Container Service) console and Click on
-Repositories
+![](media/docker-build.png)
+
+Navigate to the ECS (Elastic Container Service) console and click on
+**Repositories**
 
 Click on "**ecs-lab-repo**"
 
 ![](media/image3.png)
 
-Click on " **View Push Commands** "
+Click on "**View Push Commands** "
 
 ![](media/image4.png)
 
@@ -104,35 +104,35 @@ Login to ECR using (The quotes in the command are important)
 $ `aws ecr get-login --no-include-email --region us-west-2`
 ```
 
-**Follow the steps 3, 4 & 5 of the Push Commands to build and push the modified image**
+**Follow the steps 3, 4 & 5 of the push commands to build and push the modified image**
 
-\*If facing issues - Make sure you've done step 2
+\*If facing issues - make sure you've done step 2
 
 **Once the push is completed your docker image will be pushed to an ECR image repository on AWS**
 
 ![](media/image6.png)
 
-## Update the Cluster to use our new pushed image
+## Update the cluster to use our new pushed image
 
 ![](media/ecs-architecture.png)
 
-An ECS cluster is already provisioned for you. The cluster is
+An ECS cluster is already provisioned for you. This cluster is
 currently running a previous version of the same application. You will
 now **Deploy** the your new application **Version** to the service
 
-## Let's Update the ECS Task Definition to use the image that you just pushed
+## Let's update the ECS task definition to use the image that you just pushed
 
 Navigate to the **Elastic Container Service** Dashboard.
 
 In the navigation menu on the **left**, click **Task Definitions.**
 
-* Select the **simplewebtask**
+* select the **simplewebtask**
 
 * checkmark **simplewebtask**
 
-* Click **Create New Revision**
+* click **Create New Revision**
 
-* Scroll to the bottom of the page, then click **Create**
+* scroll to the bottom of the page, then click **Create**
 
 This will create a new version of the Task. Note the Version Number. The
 new version will use the latest container image. i.e. the image that you
