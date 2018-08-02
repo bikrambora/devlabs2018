@@ -12,9 +12,9 @@ The diagram below illustrates the architecture the lab will be using. There is c
 Go to **Cloud9** on the AWS Web console - this is your IDE in the cloud.
 You can also use your local IDE for all the steps of this lab.
 
-* On top right corner - **Switch to Oregon**
+* on top right corner - **Switch to Oregon**
 
-* On the left hand pane click on **"Shared With You"**
+* on the left hand pane click on **"Shared With You"**
 
 ![](media/image1.png)
 
@@ -140,33 +140,33 @@ just pushed.
 
 ## Let's Update the ECS Service to deploy the new version of the task
 
-* In the left navigation pane, click **Clusters**.
+* in the left navigation pane, click **Clusters**.
 
-* In the **Clusters** window, click **default \>**.
+* in the **Clusters** window, click **default \>**.
 
 This is the cluster that your service resides in.
 
-* On the **Services** tab, check **webService**
+* on the **Services** tab, check **webService**
 
-* Click **Update** then click on Revision
+* click **Update** then click on **Revision**
 
 * **Revision:** select the *latest version that you just created*
 
-* **Force New Deployment --** Check this box & turn it on
+* **Force New Deployment --** check this box & turn it on
 
-* Click **Next Step**
+* click **Next Step**
 
-* On **Step 2**, click **Next Step**
+* on **Step 2**, click **Next Step**
 
-* On **Step 3**, click **Next Step**
+* on **Step 3**, click **Next Step**
 
-* On **Step 4**, click **Update Service**
+* on **Step 4**, click **Update Service**
 
 This will deploy a new version of the application.
 
-* On the **Launch Status** page, click **View Service**
+* on the **Launch Status** page, click **View Service**
 
-* On the **Service: myService** page, click the **Events** tab.
+* on the **Service: myService** page, click the **Events** tab.
 
 ## Check if the new version on the application has successfully deployed
 
@@ -177,9 +177,9 @@ You may need to click the **Refresh** button to see the new events.
 
 Once the events says "service webService has reached a steady state."
 
-* Click the **Deployments** tab.
+* click the **Deployments** tab.
 
-* Click on **myLoadBalancer**
+* click on **myLoadBalancer**
 
 ![](media/image7.png)
 
