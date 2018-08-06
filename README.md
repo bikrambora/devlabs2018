@@ -24,9 +24,15 @@ Open the "**ECS Lab Cloud 9 Env**" By clicking on **Open IDE**
 
 ## Initial set up
 
-Once Inside Cloud9 - Open the Terminal change directory to the correct folder
+Once Inside Cloud9 - Open the Terminal change directory to the correct folder & **reset the lab**
+
 ```
 $ cd ~/environment/devlabs2018/
+
+$ chmod +x Reset.sh
+
+$ ./Reset.sh
+
 ```
 
 Install and run docker
