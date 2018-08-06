@@ -185,9 +185,11 @@ You may need to click the **Refresh** button to see the new events.
 
 Once the events says "service webService has reached a steady state."
 
-* click the **Deployments** tab.
+* Go to EC2 service page 
 
-* click on **myLoadBalancer**
+* On the left hand pane click on load balancers
+
+* search and click on **myLoadBalancer**
 
 ![](media/image7.png)
 
