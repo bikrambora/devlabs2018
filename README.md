@@ -205,7 +205,7 @@ the cloud
 ## Clean Up Step
 
 ```
-$ chmod +x Reset,sh
+$ chmod +x Reset.sh
 
 $ ./Reset.sh
 ```
