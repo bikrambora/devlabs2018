@@ -33,6 +33,8 @@ $ chmod +x Reset.sh
 
 $ ./Reset.sh
 
+$ clear
+
 ```
 
 Install and run docker
